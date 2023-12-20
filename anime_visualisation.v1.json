@@ -1,0 +1,321 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "data": {
+    "url": "https://raw.githubusercontent.com/vaibhavhariramani/Anime_Dataset_Visualisation/main/anime_dataset.csv",
+    "format": {"type": "csv"}
+  },
+  "title": {
+    "text": "ANIME DATASET EXPLORER",
+    "anchor": "middle",
+    "fontSize": 30,
+    "offset": 10,
+    "color": "red"
+  },
+  "vconcat": [
+    {
+      "hconcat": [
+        {
+          "mark": {"type": "circle", "tooltip": true},
+          "encoding": {
+            "x": {
+              "field": "episodes",
+              "type": "quantitative",
+              "axis": {
+                "title": "NUMBER OF EPISODES",
+                "tickCount": 5,
+                "grid": true,
+                "labelFlush": true
+              }
+            },
+            "y": {
+              "field": "score",
+              "type": "quantitative",
+              "scale": {"zero": false},
+              "axis": {
+                "titleAngle": 0,
+                "titleAnchor": "end",
+                "titleFontSize": 13,
+                "labelFontSize": 12,
+                "title": "SCORE",
+                "tickCount": 5,
+                "grid": true,
+                "labelFlush": true
+              }
+            },
+            "color": {
+              "condition": {
+                "param": "brush",
+                "field": "genre",
+                "type": "nominal",
+                "legend": {"columns": 1, "orient": "right"}
+              },
+              "value": "grey"
+            },
+            "opacity": {
+              "condition": {"param": "select_genre", "value": 1},
+              "value": 0
+            },
+            "tooltip": [
+              {"field": "title_english", "type": "nominal"},
+              {"field": "score", "type": "quantitative"},
+              {"field": "genre", "type": "nominal"}
+            ]
+          },
+          "transform": [
+            {"filter": "datum.episodes < 500"},
+            {"filter": "datum.score > 3.0"},
+            {"filter": {"param": "brush_for_season"}}
+          ],
+          "params": [
+            {
+              "name": "brush",
+              "select": {
+                "type": "interval",
+                "resolve": "global",
+                "encodings": ["x", "y"]
+              }
+            },
+            {
+              "name": "select_genre",
+              "select": {"type": "point", "fields": ["genre"]},
+              "bind": "legend"
+            }
+          ],
+          "height": 250,
+          "width": 280
+        },
+        {
+          "title": "COUNT OF ANIME BASED ON GENRE",
+          "mark": {"type": "arc", "tooltip": true},
+          "encoding": {
+            "theta": {
+              "aggregate": "count",
+              "field": "name",
+              "type": "quantitative",
+              "stack": true
+            },
+            "color": {"field": "genre", "type": "nominal", "legend": null},
+            "opacity": {
+              "condition": {"param": "select_genre", "value": 1},
+              "value": 0.4
+            },
+            "tooltip": [
+              {"field": "genre", "type": "nominal", "title": "Name of Genre"},
+              {
+                "field": "title_english",
+                "type": "quantitative",
+                "aggregate": "count",
+                "title": "Number of Anime"
+              }
+            ]
+          },
+          "transform": [
+            {"filter": {"param": "brush"}},
+            {"filter": {"param": "brush_for_season"}}
+          ],
+          "height": 250,
+          "width": 250
+        }
+      ]
+    },
+    {
+      "hconcat": [
+        {
+          "mark": {"type": "bar", "tooltip": true},
+          "encoding": {
+            "x": {
+              "aggregate": "count",
+              "field": "title_english",
+              "type": "quantitative",
+              "scale": {"zero": false},
+              "axis": {
+                "title": "NUMBER OF ANIME",
+                "tickCount": 5,
+                "grid": true,
+                "labelFlush": true
+              }
+            },
+            "y": {
+              "field": "rating",
+              "type": "nominal",
+              "sort": "-x",
+              "axis": {
+                "titleAngle": 0,
+                "titleAnchor": "start",
+                "titleAlign": "left",
+                "titleFontSize": 13,
+                "labelFontSize": 12,
+                "title": "RATING",
+                "labelLimit": 104
+              }
+            },
+            "color": {"field": "genre", "type": "nominal", "legend": null},
+            "opacity": {
+              "condition": {"param": "select_genre", "value": 1},
+              "value": 0.4
+            },
+            "tooltip": [
+              {
+                "field": "title_english",
+                "type": "quantitative",
+                "aggregate": "count",
+                "title": "Number of Anime"
+              },
+              {"field": "rating", "type": "nominal"},
+              {"field": "genre", "type": "nominal"}
+            ]
+          },
+          "transform": [
+            {"filter": {"param": "brush"}},
+            {"filter": {"param": "brush_for_season"}}
+          ],
+          "height": 250,
+          "width": 250
+        },
+        {
+          "mark": {"type": "bar", "tooltip": true},
+          "encoding": {
+            "x": {
+              "aggregate": "count",
+              "field": "title_english",
+              "type": "quantitative",
+              "scale": {"zero": false},
+              "axis": {
+                "title": "NUMBER OF ANIME",
+                "tickCount": 5,
+                "grid": true,
+                "labelFlush": true
+              }
+            },
+            "y": {
+              "field": "producers",
+              "type": "nominal",
+              "sort": "-x",
+              "axis": {
+                "titleAngle": 0,
+                "titleAnchor": "start",
+                "titleAlign": "left",
+                "title": "PRODUCERS",
+                "titleFontSize": 13,
+                "labelFontSize": 12
+              }
+            },
+            "color": {"field": "genre", "type": "nominal", "legend": null},
+            "opacity": {
+              "condition": {"param": "select_genre", "value": 1},
+              "value": 0.4
+            },
+            "tooltip": [
+              {"field": "producers", "type": "nominal", "title": "Producer"},
+              {
+                "aggregate": "count",
+                "field": "title_english",
+                "type": "quantitative",
+                "title": "Number of Anime"
+              },
+              {"field": "genre", "type": "nominal", "title": "GENRE"}
+            ]
+          },
+          "transform": [
+            {
+              "window": [
+                {"op": "count", "field": "title_english", "as": "num_anime"}
+              ],
+              "groupby": ["producers"]
+            },
+            {"filter": {"field": "num_anime", "gt": 80}},
+            {"filter": {"param": "brush"}},
+            {"filter": {"param": "brush_for_season"}}
+          ],
+          "height": 250,
+          "width": 250
+        }
+      ]
+    },
+    {
+      "hconcat": [
+        {
+          "title": {
+            "text": "NUMBER OF ANIME PER SEASON WISE",
+            "fontSize": 20,
+            "color": "red"
+          },
+          "mark": {"type": "bar", "tooltip": true},
+          "encoding": {
+            "y": {
+              "aggregate": "count",
+              "field": "name",
+              "type": "quantitative",
+              "title": "NUMBER OF ANIME",
+              "axis": {
+                "tickCount": 6,
+                "titleAngle": 0,
+                "titleAnchor": "middle",
+                "titleAlign": "right",
+                "labelAlign": "right",
+                "titleFontSize": 13,
+                "labelFontSize": 12,
+                "titleFontWeight": "bold"
+              }
+            },
+            "x": {
+              "field": "premiered_year",
+              "type": "temporal",
+              "timeUnit": "year",
+              "title": "YEAR OF RELEASE",
+              "axis": {
+                "tickCount": 12,
+                "tickMinStep": 5,
+                "labelAlign": "right",
+                "titleFontSize": 13,
+                "labelFontSize": 12,
+                "titleFontWeight": "bold"
+              }
+            },
+            "color": {
+              "condition": {
+                "param": "brush_for_season",
+                "field": "premiered_season",
+                "type": "nominal",
+                "legend": null
+              },
+              "value": "grey"
+            },
+            "tooltip": [
+              {
+                "field": "premiered_season",
+                "type": "nominal",
+                "title": "Season"
+              },
+              {
+                "field": "premiered_year",
+                "type": "temporal",
+                "timeUnit": "year",
+                "title": "Year of Release"
+              },
+              {
+                "aggregate": "count",
+                "field": "title_english",
+                "type": "quantitative",
+                "title": "Number of Anime"
+              }
+            ]
+          },
+          "params": [
+            {
+              "name": "brush_for_season",
+              "select": {
+                "type": "interval",
+                "resolve": "global",
+                "encodings": ["x", "y"]
+              }
+            }
+          ],
+          "height": 200,
+          "width": 600
+        }
+      ]
+    }
+  ],
+  "config": {}
+}
