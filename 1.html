@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+
+    <!--Page Title-->
+    <title>Irish Population Visualization</title>
+
+    <!--Meta Keywords and Description-->
+    <meta name="keywords" content="">
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no"/>
+
+    <!--Favicon-->
+    <link rel="shortcut icon" href="images/favicon.ico" title="Favicon"/>
+
+    <!-- Main CSS Files -->
+    <link rel="stylesheet" href="css/style.css">
+
+    <!-- Anime Color CSS -->
+    <link rel="stylesheet" href="css/anime-color.css">
+
+    <!--Icon Fonts - Font Awesome Icons-->
+    <link rel="stylesheet" href="css/font-awesome.min.css">
+
+    <!-- Animate CSS-->
+    <link href="css/animate.css" rel="stylesheet" type="text/css">
+
+    <!--Google Webfonts-->
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700,800' rel='stylesheet' type='text/css'>
+    
+    <script src="https://cdn.jsdelivr.net/npm/vega@5"></script>
+	<script src="https://cdn.jsdelivr.net/npm/vega-lite@5"></script>
+	<script src="https://cdn.jsdelivr.net/npm/vega-embed@6"></script>
+</head>
+<body>
+    
+    <div id="vis"></div>
+    <!--Footer-->
+    <footer id="landing-footer" class="clearfix">
+        <div class="row clearfix">
+
+            <p id="copyright" class="col-2">Made with love by <a href="https://vaibhavhariramani.github.io/">Vaibhav Hariramani</a></p>
+
+            <!--Social Icons in Footer-->
+            <ul class="col-2 social-icons">
+                <ul class="social-icons">
+                    <li>
+                        <a target="_blank" title="linkedin" href="https://www.linkedin.com/in/vaibhav-hariramani/">
+                            <i class="fa fa-linkedin fa-1x"></i><span>linkedin</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a target="_blank" title="Instagram" href="https://www.instagram.com/geeky_bawa_/">
+                            <i class="fa fa-instagram fa-1x"></i><span>Instagram</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a target="_blank" title="twitter" href="https://twitter.com/vaibhavhariram2">
+                            <i class="fa fa-twitter fa-1x"></i><span>Twitter</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a target="_blank" title="Google+" href="mailto:vaibhav.hariramani01@gmail.com">
+                            <i class="fa fa-google-plus fa-1x"></i><span>Google+</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a target="_blank" title="whatsapp" href="http://wa.me/917790991077?text=Hey+Vaibhav!+HIT_ENTER">
+                            <i class="fa fa-whatsapp fa-1x"></i><span>whatsapp</span>
+                        </a>
+                    </li>
+                    
+                    
+                </ul>
+            </ul>
+            <!--End of Social Icons in Footer-->
+        </div>
+    </footer>
+    <!--End of Footer-->
+    <script>
+        const spec = "population_chloropleth.json";
+          vegaEmbed("#vis", spec)
+            // result.view provides access to the Vega View API
+          .then(result => console.log(result))
+          .catch(console.warn);
+      </script>
+    </body>
+</html>

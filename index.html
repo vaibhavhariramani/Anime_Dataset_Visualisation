@@ -28,6 +28,100 @@
 
     <!--Google Webfonts-->
     <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700,800' rel='stylesheet' type='text/css'>
+    
+    <style>
+        * {box-sizing: border-box}
+        body {font-family: Verdana, sans-serif; margin:0}
+        .mySlides {display: none}
+        img {vertical-align: middle;}
+        
+        /* Slideshow container */
+        .slideshow-container {
+          max-width: 1000px;
+          position: relative;
+          margin: auto;
+        }
+        
+        /* Next & previous buttons */
+        .prev, .next {
+          cursor: pointer;
+          position: absolute;
+          top: 50%;
+          width: auto;
+          padding: 16px;
+          margin-top: -22px;
+          color: white;
+          font-weight: bold;
+          font-size: 18px;
+          transition: 0.6s ease;
+          border-radius: 0 3px 3px 0;
+          user-select: none;
+        }
+        
+        /* Position the "next button" to the right */
+        .next {
+          right: 0;
+          border-radius: 3px 0 0 3px;
+        }
+        
+        /* On hover, add a black background color with a little bit see-through */
+        .prev:hover, .next:hover {
+          background-color: rgba(0,0,0,0.8);
+        }
+        
+        /* Caption text */
+        .text {
+          color: #f2f2f2;
+          font-size: 15px;
+          padding: 8px 12px;
+          position: absolute;
+          bottom: 8px;
+          width: 100%;
+          text-align: center;
+        }
+        
+        /* Number text (1/3 etc) */
+        .numbertext {
+          color: #f2f2f2;
+          font-size: 12px;
+          padding: 8px 12px;
+          position: absolute;
+          top: 0;
+        }
+        
+        /* The dots/bullets/indicators */
+        .dot {
+          cursor: pointer;
+          height: 15px;
+          width: 15px;
+          margin: 0 2px;
+          background-color: #bbb;
+          border-radius: 50%;
+          display: inline-block;
+          transition: background-color 0.6s ease;
+        }
+        
+        .active, .dot:hover {
+          background-color: #717171;
+        }
+        
+        /* Fading animation */
+        .fade {
+          animation-name: fade;
+          animation-duration: 1.5s;
+        }
+        
+        @keyframes fade {
+          from {opacity: .4} 
+          to {opacity: 1}
+        }
+        
+        /* On smaller screens, decrease text size */
+        @media only screen and (max-width: 300px) {
+          .prev, .next,.text {font-size: 11px}
+        }
+        </style>
+    
     <script src="https://cdn.jsdelivr.net/npm/vega@5"></script>
 	<script src="https://cdn.jsdelivr.net/npm/vega-lite@5"></script>
 	<script src="https://cdn.jsdelivr.net/npm/vega-embed@6"></script>
@@ -157,6 +251,9 @@
                 <a href="#about" class="button">Checkout Vegalite Visualization</a>
                 <a href="dataset_analysis.html" class="button">EDA</a>
                 <a href="https://www.kaggle.com/aludosan/myanimelist-anime-dataset-as-20190204" class="button">Dataset Used</a>
+                
+                <!-- <a href="1.html"> <img src="images/gallery-images/gallery-image-7.jpg" /></a> -->
+
                 <!--End Call to Action-->
 
             </div>
@@ -198,7 +295,7 @@
                    data-wow-delay="0.9s"><img src="images/gallery-images/gallery-image-5.jpg" alt="Landing Page"/></a>
                 <a href="images/gallery-images/gallery-image-6.jpg" data-featherlight="image" class="col-3 wow fadeIn"
                    data-wow-delay="0.7s"><img src="images/gallery-images/gallery-image-6.jpg" alt="Landing Page"/></a>
-
+                   
         </aside>
         <!--End of Gallery-->
 
@@ -228,13 +325,46 @@
                         <h2 class="section-title">Focusing On What Matters Most</h2>
                         <p class="section-subtitle">visulisating and Analysing Data is very important</p>
                     </div>
+                    <a href="https://vaibhavhariramani.github.io/VegaLite-Exhibit/" class="button">
                     <p>Checkout Blogs and Articles on Vegalite.
                     </p>
+                    </a>
                     
                     <!-- Just replace the Video ID "UYJ5IjBRlW8" with the ID of your video on YouTube (Found within the URL) -->
-                    <a href="https://vaibhavhariramani.github.io/VegaLite-Exhibit/" data-videoid="UYJ5IjBRlW8" data-videosite="youtube" class="button video link-lightbox">
+                    <a href="https://vaibhavhariramani.github.io/VegaLite-Exhibit/" data-videoid="27Io_87-QJI" data-videosite="youtube" class="button video link-lightbox">
+                        <!-- <a href="https://vaibhavhariramani.github.io/VegaLite-Exhibit/"class="button video link-lightbox"> -->
                         Checkout Tutorials <i class="fa fa-play" aria-hidden="true"></i>
                     </a>
+                    <div class="slideshow-container">
+
+                        <div class="mySlides fade">
+                          <div class="numbertext">1 / 2</div>
+                          <a href="1.html"><img src="images/gallery-images/gallery-image-7.jpg" style="width:100%"></a>
+                          <div class="text">Irish population visualisation</div>
+                        </div>
+                        
+                        <div class="mySlides fade">
+                          <div class="numbertext">2 / 2</div>
+                          <a href="2.html"><img src="images/gallery-images/gallery-image-8.jpg" style="width:100%"></a>
+                          <div class="text">Video Game Sales Explorer</div>
+                        </div>
+                        
+                        
+                        
+                        <a class="prev" onclick="plusSlides(-1)">❮</a>
+                        <a class="next" onclick="plusSlides(1)">❯</a>
+                        
+                        </div>
+                        <br>
+                        
+                        <div style="text-align:center">
+                          <span class="dot" onclick="currentSlide(1)"></span> 
+                          <span class="dot" onclick="currentSlide(2)"></span> 
+                        </div>
+                        
+                        
+                    <!-- <a href="1.html"><img src="images/gallery-images/gallery-image-7.jpg" /></a> -->
+
                 </div>
                 <!--End Content Right Side-->
 
@@ -260,7 +390,7 @@
 
                 <!--User Testimonial-->
                 <blockquote class="col-3 testimonial classic">
-                    <img src="images/user-images/user-1.jpg" alt="User"/>
+                    <a href="https://www.linkedin.com/in/vaibhav-hariramani/"><img src="images/user-images/user-1.jpg" alt="User"/></a>
                     <footer><a href="https://www.linkedin.com/in/vaibhav-hariramani/">Vaibhav Hariramani</a></footer>
                     <q>Machine Learning Engineer at Avaya Inc., interested in MLOps and ML infra. Hobbies are Chess and Anime.</q>
                     
@@ -269,7 +399,7 @@
 
                 <!--User Testimonial-->
                 <blockquote class="col-3 testimonial classic">
-                    <img src="images/user-images/user-2.jpg" alt="User"/>
+                    <a href="https://www.linkedin.com/in/vaibhavranka234/"><img src="images/user-images/user-2.jpg" alt="User"/></a>
                     <footer><a href="https://www.linkedin.com/in/vaibhavranka234/">Vaibhav Ranka</a></footer>
                     <q>STAMP 1G | MSc in Computer Science from UCD | Former Data Analyst at Wipro | Data Science | Python | SQL | Power BI</q>
                     
@@ -306,42 +436,42 @@
 
                 <div class="col-2-3">
 
-                    <a href="https://github.com/vaibhavhariramani/Anime_Recommendation" class="col-3">
+                    <a href="https://github.com/vaibhavhariramani/B-W-Image-Colorisation-with-FrontEnd-UI-using-django" class="col-3">
                         <img src="images/company-images/company-logo1.png" alt="Company"/>
-                        <div class="client-overlay"><span>Anime Recommender</span></div>
+                        <div class="client-overlay"><span>Image Colorisation</span></div>
                     </a>
-                    <a href="#" class="col-3">
+                    <a href="https://github.com/vaibhavhariramani/Image_Upscaling_Algorithms" class="col-3">
                         <img src="images/company-images/company-logo2.png" alt="Company"/>
-                        <div class="client-overlay"><span>Fingerprint</span></div>
+                        <div class="client-overlay"><span>IMAGE UPSCALER</span></div>
                     </a>
-                    <a href="#" class="col-3">
+                    <a href="https://github.com/vaibhavhariramani/Text-Scanner-App-using-OCR-Flutter" class="col-3">
                         <img src="images/company-images/company-logo3.png" alt="Company"/>
-                        <div class="client-overlay"><span>The Man</span></div>
+                        <div class="client-overlay"><span>Image to Text</span></div>
                     </a>
-                    <a href="#" class="col-3">
+                    <a href="https://github.com/vaibhavhariramani/Loan-Defaulter-Prediction-Machine-Learning" class="col-3">
                         <img src="images/company-images/company-logo4.png" alt="Company"/>
-                        <div class="client-overlay"><span>Mustache</span></div>
+                        <div class="client-overlay"><span>Loan Prediction</span></div>
                     </a>
-                    <a href="#" class="col-3">
+                    <a href="https://github.com/vaibhavhariramani/Facial-Expression-Recognition-with-Keras-and-deployment" class="col-3">
                         <img src="images/company-images/company-logo5.png" alt="Company"/>
-                        <div class="client-overlay"><span>Goat</span></div>
+                        <div class="client-overlay"><span>Facial-Expression-Recognition</span></div>
                     </a>
-                    <a href="#" class="col-3">
+                    <a href="https://github.com/vaibhavhariramani/Face-Mask-Detection" class="col-3">
                         <img src="images/company-images/company-logo6.png" alt="Company"/>
-                        <div class="client-overlay"><span>Justice</span></div>
+                        <div class="client-overlay"><span>Face Mask Detection</span></div>
                     </a>
-                    <a href="#" class="col-3">
+                    <a href="https://pub.dev/packages/flutter_dashboard" class="col-3">
                         <img src="images/company-images/company-logo7.png" alt="Company"/>
-                        <div class="client-overlay"><span>Ball</span></div>
+                        <div class="client-overlay"><span>Flutter Library</span></div>
                     </a>
-                    <a href="#" class="col-3">
+                    <a href="https://medium.com/geeky-bawa" class="col-3">
                         <img src="images/company-images/company-logo8.png" alt="Company"/>
-                        <div class="client-overlay"><span>Cold</span></div>
+                        <div class="client-overlay"><span>Medium Blogs</span></div>
                     </a>
 
-                    <a href="#" class="col-3">
+                    <a href="https://vaibhavhariramani.github.io/blogs/" class="col-3">
                         <img src="images/company-images/company-logo9.png" alt="Company"/>
-                        <div class="client-overlay"><span>Cold</span></div>
+                        <div class="client-overlay"><span>BLogs</span></div>
                     </a>
 
                 </div>
@@ -422,5 +552,34 @@
       .then(result => console.log(result))
       .catch(console.warn);
   </script>
+
+<script>
+    let slideIndex = 1;
+    showSlides(slideIndex);
+    
+    function plusSlides(n) {
+      showSlides(slideIndex += n);
+    }
+    
+    function currentSlide(n) {
+      showSlides(slideIndex = n);
+    }
+    
+    function showSlides(n) {
+      let i;
+      let slides = document.getElementsByClassName("mySlides");
+      let dots = document.getElementsByClassName("dot");
+      if (n > slides.length) {slideIndex = 1}    
+      if (n < 1) {slideIndex = slides.length}
+      for (i = 0; i < slides.length; i++) {
+        slides[i].style.display = "none";  
+      }
+      for (i = 0; i < dots.length; i++) {
+        dots[i].className = dots[i].className.replace(" active", "");
+      }
+      slides[slideIndex-1].style.display = "block";  
+      dots[slideIndex-1].className += " active";
+    }
+    </script>
 </body>
 </html>
