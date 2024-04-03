@@ -1,7 +1,7 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
   "data": {
-    "url": "https://raw.githubusercontent.com/vaibhavhariramani/Anime_Dataset_Visualisation/main/genre_filtered_anime_dataset.csv",
+    "url": "https://raw.githubusercontent.com/vaibhavhariramani/Anime_Dataset_Visualisation/main/anime_dataset.csv",
     "format": {"type": "csv"}
   },
   "title": {
